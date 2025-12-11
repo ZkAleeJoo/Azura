@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto - Azura Shop</title>
+    
+    <link rel="icon" href="assets/img/logo-azura.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header class="header-principal">
+        <div class="container-nav">
+            <div class="logo">
+                <a href="index.html" class="logo-texto">AZURA</a>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="¿Qué buscas hoy?...">
+                <button>💖</button>
+            </div>
+
+            <div class="user-actions">
+    <button class="btn-carrito">
+        🛒 Carrito <span id="contador-carrito">(0)</span>
+    </button>
+</div>
+        </div>
+        
+        <nav class="nav-categorias">
+            <a href="index.html">Inicio</a>
+            <a href="pagos.html">Medios de pago</a>
+            <a href="contacto.html" class="activo">Contacto</a>
+        </nav>
+    </header>
+
+    <main class="container-contacto">
+        <h2>💌 Hablemos de tu Idea 💌</h2>
+        <p>¿Quieres un Funko personalizado o tienes dudas? ¡Escríbenos!</p>
+
+        <div class="grid-contacto">
+            
+            <div class="info-contacto">
+                <div class="card-info">
+                    <h3>WhatsApp</h3>
+                    <p>+51 903 226 700</p>
+                    <small>Atendemos de 9am a 8pm</small>
+                </div>
+                
+                <div class="card-info">
+                    <h3>Redes Sociales</h3>
+                    <p>@azura_dreams_</p>
+                    <small>Instagram & TikTok</small>
+                </div>
+
+                <div class="card-info">
+                    <h3>Email</h3>
+                    <p>hola@azurashop.com</p>
+                </div>
+            </div>
+
+            <form id="form-contacto" class="formulario-cute">
+                
+                <div class="campo">
+                    <label>Tu Nombre:</label>
+                    <input type="text" name="nombre" placeholder="Ej: Alejandro Pretell" required>
+                </div>
+
+                <div class="campo">
+                    <label>Tu WhatsApp:</label>
+                    <input type="tel" name="telefono" placeholder="Para contactarte rápido" required>
+                </div>
+
+                <div class="campo">
+                    <label>Cuéntanos tu idea:</label>
+                    <textarea name="mensaje" rows="5" placeholder="Hola, quisiera cotizar un funko de..." required></textarea>
+                </div>
+
+                <button type="submit" class="btn-enviar">Enviar Mensaje ✨</button>
+            </form>
+
+        </div>
+    </main>
+
+<script src="script.js"></script> 
+</body>
+</html>

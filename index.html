@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azura Shop - Coleccionables</title>
+    
+    <link rel="icon" href="assets/img/logo-azura.png" type="image/png">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header-principal">
+        <div class="container-nav">
+            <div class="logo">
+                <a href="#" class="logo-texto">AZURA</a>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" placeholder="¿Qué buscas hoy?....">
+                <button>💖</button>
+            </div>
+
+            <div class="user-actions">
+    <button class="btn-carrito" onclick="abrirCarrito()">
+    🛒 Carrito <span id="contador-carrito">(0)</span>
+</button>
+</div>
+        </div>
+        
+        <nav class="nav-categorias">
+            <a href="index.html">Inicio</a>
+            
+            <a href="pagos.html">Medios de pago</a>
+            <a href="contacto.html">Contacto</a>
+        </nav>
+    </header>
+
+<main class="container-productos">
+        <h2>Escoge una de las opciones...</h2>
+        <div class="grid-productos">
+            
+            <article class="card-producto">
+                <div class="img-container">
+                    <img src="assets/img/funko-pareja.png" alt="Funko Pareja">
+                </div>
+                <h3>Funkos Personalizados</h3>
+                <div class="precios">
+                    <span class="precio-actual">S/ 30.00</span>
+                </div>
+                <button class="btn-agregar" onclick="window.location.href='producto-custom.html'">
+                    Personalizar 🖌️
+                </button>
+            </article>
+
+            <article class="card-producto">
+                <div class="img-container">
+                    <img src="assets/img/minipets.png" alt="Mini Pets">
+                </div>
+                <h3>Mini Pets Personalizados</h3> 
+                <div class="precios">
+                    <span class="precio-actual">S/ 10.00</span>
+                </div>
+                <button class="btn-agregar" onclick="window.location.href='producto-pets.html'">
+                    Diseñar Mascota 🐾
+                </button>
+            </article>
+
+             <article class="card-producto">
+                <div class="img-container">
+                    <img src="assets/img/funkos-stock.png" alt="Funkos en Stock">
+                </div>
+                <h3>Funkos en Stock</h3>
+                <div class="precios">
+                    <span class="precio-actual">Desde S/ 30.00</span>
+                </div>
+                <button class="btn-agregar" onclick="window.location.href='stock.html'">
+                    Ver Catálogo 📦
+                </button>
+            </article>
+
+        </div>
+    </main>
+    
+    <div id="modal-carrito" class="modal-carrito">
+        <div class="contenido-carrito">
+            <span class="cerrar-carrito" onclick="cerrarCarrito()">&times;</span>
+            <h2>Tu Canasta ✨</h2>
+            
+            <ul id="lista-carrito">
+                </ul>
+
+            <div class="total-carrito">
+                <h3>Total: S/ <span id="total-precio">0.00</span></h3>
+            </div>
+
+            <button class="btn-checkout" onclick="enviarPedidoWhatsApp()">
+                Completar pedido en WhatsApp 📱
+            </button>
+        </div>
+    </div>
+
+    <div id="modal-alerta" class="modal-aviso">
+        <div class="contenido-aviso">
+            <h3 id="titulo-alerta">¡Atención! 💖</h3>
+            <p id="mensaje-alerta">Aquí va el mensaje...</p>
+            <button onclick="cerrarAlerta()" class="btn-entendido">
+                Entendido ✨
+            </button>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

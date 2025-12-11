@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stock Disponible - Azura Shop</title>
+    <link rel="icon" href="assets/img/logo-azura.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header class="header-principal">
+        <div class="container-nav">
+            <div class="logo"><a href="index.html" class="logo-texto">AZURA</a></div>
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar en stock...">
+                <button>🔍</button>
+            </div>
+            <div class="user-actions">
+                <button class="btn-carrito" onclick="window.location.href='index.html'">
+                    🏠 Volver
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container-productos">
+        <h2>✨ Catálogo en Construcción ✨</h2>
+        <p>Estamos preparando nuevos modelos para entrega inmediata.</p>
+
+        <div class="grid-productos">
+            
+            <article class="card-producto">
+                <div class="img-container" style="height: 250px; background-color: #fcebf4; display: flex; align-items: center; justify-content: center; border-radius: 15px;">
+                    <span style="color: #dfaec9; font-size: 3rem;">📦</span>
+                </div>
+                <h3>Próximamente</h3>
+                <div class="precios">
+                    <span>---</span>
+                </div>
+                <button class="btn-agregar" style="background-color: #e0e0e0; cursor: not-allowed; color: #999;">No disponible</button>
+            </article>
+
+            <article class="card-producto">
+                <div class="img-container" style="height: 250px; background-color: #fcebf4; display: flex; align-items: center; justify-content: center; border-radius: 15px;">
+                    <span style="color: #dfaec9; font-size: 3rem;">✨</span>
+                </div>
+                <h3>Próximamente</h3>
+                <div class="precios">
+                    <span>---</span>
+                </div>
+                <button class="btn-agregar" style="background-color: #e0e0e0; cursor: not-allowed; color: #999;">No disponible</button>
+            </article>
+
+        </div>
+    </main>
+
+    <script>
+        function consultarStock(nombreProducto) {
+            var numeroAzura = "51903226700";
+            var mensaje = "Hola Azura! 📦 Me interesa comprar el Funko en Stock: *" + nombreProducto + "*. ¿Sigue disponible?";
+            var url = "https://wa.me/" + numeroAzura + "?text=" + mensaje;
+            window.open(url, '_blank');
+        }
+    </script>
+
+</body>
+</html>

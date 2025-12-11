@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diseña tu Mini Pet - Azura Shop</title>
+    <link rel="icon" href="assets/img/logo-azura.png" type="image/png">
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <header class="header-principal">
+        <div class="container-nav">
+            <div class="logo"><a href="index.html" class="logo-texto">AZURA</a></div>
+            <div class="search-bar">
+                <input type="text" placeholder="¿Qué buscas hoy?...">
+                <button>💖</button>
+            </div>
+            <div class="user-actions">
+                <button class="btn-carrito" onclick="window.location.href='index.html'">
+                    🏠 Volver
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <main class="container-detalle">
+        
+        <div class="producto-imagen">
+            <img src="assets/img/minipets.png" alt="Mini Pet Referencia">
+        </div>
+
+        <div class="producto-info">
+            <h2>Mini Pet Personalizado 🐾</h2>
+            
+            <p class="precio-grande">S/ <span id="precio-display">10.00</span></p>
+            
+            <p class="descripcion">
+                Inmortaliza a tu peludito (perro, gato, conejo...) en una figura tierna y única.
+            </p>
+
+            <form id="form-pets" class="formulario-cute">
+                
+                <div class="campo">
+                    <label>Tu Nombre:</label>
+                    <input type="text" id="cliente-nombre" placeholder="¿Quién lo recibirá?" required>
+                </div>
+
+                <div class="campo">
+                    <label>Raza y Detalles:</label>
+                    <textarea id="cliente-detalles" rows="4" placeholder="Ej: Es un gato naranja atigrado con collar azul..." required></textarea>
+                </div>
+
+                <div class="seccion-extras">
+                    <label style="color: var(--color-secundario); font-weight: bold; margin-bottom: 10px; display: block;">Agrega Accesorios:</label>
+                    
+                    <div class="control-extra">
+                        <div class="info-extra">
+                            <span>Accesorio Pequeño (S/ 1.00)</span>
+                            <small>Ej: Plaquita, huesito, pelota.</small>
+                        </div>
+                        <div class="contador">
+                            <button type="button" onclick="cambiarExtra('peque', -1)">-</button>
+                            <span id="cantidad-peque">0</span>
+                            <button type="button" onclick="cambiarExtra('peque', 1)">+</button>
+                        </div>
+                    </div>
+
+                    <div class="control-extra">
+                        <div class="info-extra">
+                            <span>Accesorio Grande (S/ 5.00)</span>
+                            <small>Ej: Camita, casita, disfraz complejo.</small>
+                        </div>
+                        <div class="contador">
+                            <button type="button" onclick="cambiarExtra('grande', -1)">-</button>
+                            <span id="cantidad-grande">0</span>
+                            <button type="button" onclick="cambiarExtra('grande', 1)">+</button>
+                        </div>
+                    </div>
+                </div>
+
+                <p style="color: #888; font-size: 0.9rem; margin: 20px 0;">
+                    📸 <b>Nota:</b> La foto de tu mascota la enviarás por WhatsApp al finalizar.
+                </p>
+
+                <button type="submit" class="btn-comprar-ahora">
+                    Comprar en WhatsApp 📱
+                </button>
+            </form>
+        </div>
+
+    </main>
+
+    <div id="modal-aviso-foto" class="modal-aviso">
+        <div class="contenido-aviso">
+            <h3>¡Queremos ver a tu mascota! 🐶🐱</h3>
+            <p>Para capturar su esencia, necesitamos verla.</p>
+            <div class="caja-destacada">
+                <p>Al abrirse el chat, por favor<br><strong>ADJUNTA LA FOTO DE TU MASCOTA</strong></p>
+            </div>
+            <button onclick="irAWhatsAppPets()" class="btn-entendido">
+                ¡Entendido! Guau ✨
+            </button>
+        </div>
+    </div>
+
+    <script>
+        // LÓGICA ESPECÍFICA PARA PETS (PRECIO BASE 10)
+        let precioBase = 10.00;
+        let precioPeque = 1.00;
+        let precioGrande = 5.00;
+        
+        let cantPeque = 0;
+        let cantGrande = 0;
+        let precioTotal = 10.00;
+
+        let nombreCliente = "";
+        let detallesCliente = "";
+
+        function cambiarExtra(tipo, cantidad) {
+            if (tipo === 'peque') {
+                cantPeque += cantidad;
+                if (cantPeque < 0) cantPeque = 0;
+                document.getElementById('cantidad-peque').innerText = cantPeque;
+            } else {
+                cantGrande += cantidad;
+                if (cantGrande < 0) cantGrande = 0;
+                document.getElementById('cantidad-grande').innerText = cantGrande;
+            }
+            actualizarPrecio();
+        }
+
+        function actualizarPrecio() {
+            precioTotal = precioBase + (cantPeque * precioPeque) + (cantGrande * precioGrande);
+            document.getElementById('precio-display').innerText = precioTotal.toFixed(2);
+        }
+
+        document.getElementById('form-pets').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            nombreCliente = document.getElementById('cliente-nombre').value;
+            detallesCliente = document.getElementById('cliente-detalles').value;
+            document.getElementById('modal-aviso-foto').style.display = 'flex';
+        });
+
+        function irAWhatsAppPets() {
+            var numeroAzura = "51903226700";
+            
+            let textoExtras = "Ninguno";
+            if (cantPeque > 0 || cantGrande > 0) {
+                textoExtras = ""; 
+                if (cantPeque > 0) textoExtras += cantPeque + " Accesorios Pequeños%0A";
+                if (cantGrande > 0) textoExtras += cantGrande + " Accesorios Grandes%0A";
+            }
+
+            var mensaje = "Hola Azura, deseo realizar el siguiente pedido:%0A%0A" +
+                          "*RESUMEN DE COMPRA (Pets)*%0A" +
+                          "--------------------------------%0A" +
+                          "• *Producto:* Mini Pet Personalizado%0A" +
+                          "• *Cliente:* " + nombreCliente + "%0A" +
+                          "• *Raza/Detalles:* " + detallesCliente + "%0A" +
+                          "• *Extras:* " + textoExtras + "%0A" +
+                          "--------------------------------%0A" +
+                          "*TOTAL A PAGAR: S/ " + precioTotal.toFixed(2) + "*%0A" +
+                          "--------------------------------%0A%0A" +
+                          "*Nota:* Adjunto la foto de mi mascota a continuación.";
+
+            var url = "https://wa.me/" + numeroAzura + "?text=" + mensaje;
+            window.open(url, '_blank');
+            document.getElementById('modal-aviso-foto').style.display = 'none';
+        }
+    </script>
+
+    <div id="modal-alerta" class="modal-aviso">
+        <div class="contenido-aviso">
+            <h3 id="titulo-alerta">¡Atención! 💖</h3>
+            <p id="mensaje-alerta">Aquí va el mensaje...</p>
+            <button onclick="cerrarAlerta()" class="btn-entendido">
+                Entendido ✨
+            </button>
+        </div>
+    </div>
+
+</body>
+</html>
